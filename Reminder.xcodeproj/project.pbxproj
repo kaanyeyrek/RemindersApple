@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CEA15DFE297716E200CA6EC5 /* RMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA15DFD297716E200CA6EC5 /* RMTextField.swift */; };
 		CEB2ADB6297430610044B4CD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2ADB5297430610044B4CD /* HomeViewModel.swift */; };
 		CEB2ADB82974307B0044B4CD /* HomeViewModelContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2ADB72974307B0044B4CD /* HomeViewModelContracts.swift */; };
 		CEB2ADBD2974359E0044B4CD /* RMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2ADBC2974359E0044B4CD /* RMView.swift */; };
@@ -15,6 +16,10 @@
 		CEB2ADC62974596A0044B4CD /* RMImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2ADC52974596A0044B4CD /* RMImageView.swift */; };
 		CEB2ADC829745A610044B4CD /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2ADC729745A610044B4CD /* Constans.swift */; };
 		CEB2ADCC29747D480044B4CD /* RMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2ADCB29747D480044B4CD /* RMButton.swift */; };
+		CEC51447297580EC005E6CC5 /* RemindersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC51446297580EC005E6CC5 /* RemindersTableViewCell.swift */; };
+		CEC5144B2975AEFE005E6CC5 /* AddNewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5144A2975AEFE005E6CC5 /* AddNewListViewController.swift */; };
+		CEC5144D2975B16E005E6CC5 /* AddNewListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5144C2975B16E005E6CC5 /* AddNewListViewModel.swift */; };
+		CEC514512975D0D0005E6CC5 /* NewListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC514502975D0D0005E6CC5 /* NewListCollectionViewCell.swift */; };
 		CEFE81E42973156A008CE454 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE81E32973156A008CE454 /* AppDelegate.swift */; };
 		CEFE81E62973156A008CE454 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE81E52973156A008CE454 /* SceneDelegate.swift */; };
 		CEFE81E82973156A008CE454 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE81E72973156A008CE454 /* HomeViewController.swift */; };
@@ -44,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CEA15DFD297716E200CA6EC5 /* RMTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMTextField.swift; sourceTree = "<group>"; };
 		CEB2ADB5297430610044B4CD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CEB2ADB72974307B0044B4CD /* HomeViewModelContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelContracts.swift; sourceTree = "<group>"; };
 		CEB2ADBC2974359E0044B4CD /* RMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMView.swift; sourceTree = "<group>"; };
@@ -52,6 +58,10 @@
 		CEB2ADC52974596A0044B4CD /* RMImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMImageView.swift; sourceTree = "<group>"; };
 		CEB2ADC729745A610044B4CD /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		CEB2ADCB29747D480044B4CD /* RMButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMButton.swift; sourceTree = "<group>"; };
+		CEC51446297580EC005E6CC5 /* RemindersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersTableViewCell.swift; sourceTree = "<group>"; };
+		CEC5144A2975AEFE005E6CC5 /* AddNewListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewListViewController.swift; sourceTree = "<group>"; };
+		CEC5144C2975B16E005E6CC5 /* AddNewListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewListViewModel.swift; sourceTree = "<group>"; };
+		CEC514502975D0D0005E6CC5 /* NewListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEFE81E02973156A008CE454 /* Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFE81E32973156A008CE454 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEFE81E52973156A008CE454 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,12 +102,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CEA15DFC297716C100CA6EC5 /* Textfield */ = {
+			isa = PBXGroup;
+			children = (
+				CEA15DFD297716E200CA6EC5 /* RMTextField.swift */,
+			);
+			path = Textfield;
+			sourceTree = "<group>";
+		};
 		CEB2ADB029742F2E0044B4CD /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				CEFE81E72973156A008CE454 /* HomeViewController.swift */,
-				CEB2ADB5297430610044B4CD /* HomeViewModel.swift */,
-				CEB2ADB72974307B0044B4CD /* HomeViewModelContracts.swift */,
+				CEC514482975AEC8005E6CC5 /* Home */,
+				CEC514492975AED9005E6CC5 /* AddNewList */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -138,10 +155,12 @@
 		CEB2ADB9297435160044B4CD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CEA15DFC297716C100CA6EC5 /* Textfield */,
 				CEB2ADCA29747A0F0044B4CD /* Button */,
 				CEB2ADBB2974356A0044B4CD /* View */,
 				CEB2ADC129743E550044B4CD /* Label */,
 				CEB2ADC229743E5D0044B4CD /* ImageView */,
+				CEC51445297580C8005E6CC5 /* Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,6 +204,34 @@
 				CEB2ADCB29747D480044B4CD /* RMButton.swift */,
 			);
 			path = Button;
+			sourceTree = "<group>";
+		};
+		CEC51445297580C8005E6CC5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CEC51446297580EC005E6CC5 /* RemindersTableViewCell.swift */,
+				CEC514502975D0D0005E6CC5 /* NewListCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		CEC514482975AEC8005E6CC5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CEFE81E72973156A008CE454 /* HomeViewController.swift */,
+				CEB2ADB5297430610044B4CD /* HomeViewModel.swift */,
+				CEB2ADB72974307B0044B4CD /* HomeViewModelContracts.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		CEC514492975AED9005E6CC5 /* AddNewList */ = {
+			isa = PBXGroup;
+			children = (
+				CEC5144A2975AEFE005E6CC5 /* AddNewListViewController.swift */,
+				CEC5144C2975B16E005E6CC5 /* AddNewListViewModel.swift */,
+			);
+			path = AddNewList;
 			sourceTree = "<group>";
 		};
 		CEFE81D72973156A008CE454 = {
@@ -370,12 +417,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEFE81E82973156A008CE454 /* HomeViewController.swift in Sources */,
+				CEC5144D2975B16E005E6CC5 /* AddNewListViewModel.swift in Sources */,
 				CEFE81E42973156A008CE454 /* AppDelegate.swift in Sources */,
 				CEFE81E62973156A008CE454 /* SceneDelegate.swift in Sources */,
 				CEB2ADC429743E960044B4CD /* RMLabel.swift in Sources */,
 				CEB2ADC02974380E0044B4CD /* Extensions.swift in Sources */,
+				CEA15DFE297716E200CA6EC5 /* RMTextField.swift in Sources */,
 				CEB2ADC829745A610044B4CD /* Constans.swift in Sources */,
 				CEB2ADC62974596A0044B4CD /* RMImageView.swift in Sources */,
+				CEC5144B2975AEFE005E6CC5 /* AddNewListViewController.swift in Sources */,
+				CEC51447297580EC005E6CC5 /* RemindersTableViewCell.swift in Sources */,
+				CEC514512975D0D0005E6CC5 /* NewListCollectionViewCell.swift in Sources */,
 				CEB2ADB6297430610044B4CD /* HomeViewModel.swift in Sources */,
 				CEB2ADCC29747D480044B4CD /* RMButton.swift in Sources */,
 				CEFE81EE2973156A008CE454 /* Reminder.xcdatamodeld in Sources */,

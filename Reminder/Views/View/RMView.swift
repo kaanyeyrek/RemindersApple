@@ -13,11 +13,16 @@ class RMView: UIView {
         super.init(frame: frame)
         configure()
     }
+    convenience init(color: UIColor?, radius: CGFloat) {
+        self.init(frame: .zero)
+        backgroundColor = color
+        layer.cornerRadius = radius
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     private func configure() {
         backgroundColor = .systemBackground
-        layer.cornerRadius = 10
+       
     }
 }

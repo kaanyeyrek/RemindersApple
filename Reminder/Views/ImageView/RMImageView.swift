@@ -13,7 +13,7 @@ class RMImageView: UIImageView {
         super.init(frame: frame)
         configure()
     }
-    convenience init(setImage: UIImage?, setBackgroundColor: UIColor) {
+    convenience init(setImage: UIImage?, setBackgroundColor: UIColor?) {
         self.init(frame: .zero)
         image = setImage
         backgroundColor = setBackgroundColor
@@ -25,8 +25,6 @@ class RMImageView: UIImageView {
         layer.cornerRadius = 18
         clipsToBounds = true
         layer.masksToBounds = true
-        contentMode = .center
         tintColor = .white
-        
     }
 }

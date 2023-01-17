@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+enum HomeViewModelContracts {
+    
+}
+
+enum HomeViewModelRoute {
+    case addNewList
+}

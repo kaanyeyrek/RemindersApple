@@ -10,6 +10,7 @@ import Foundation
 protocol HomeViewModelInterface {
     func viewWillAppear()
     func viewDidLoad()
+    func didTappedAddListButton()
 }
 
 final class HomeViewModel {
@@ -29,6 +30,10 @@ extension HomeViewModel: HomeViewModelInterface {
         view?.setLayout()
         view?.setSearchController()
         view?.setTableView()
+        view?.setTarget()
+    }
+    func didTappedAddListButton() {
+        view?.navigate(with: .addNewList)
     }
 }
 

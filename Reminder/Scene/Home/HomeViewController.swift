@@ -13,6 +13,8 @@ protocol HomeViewInterface: AnyObject {
     func setLayout()
     func setSearchController()
     func setTableView()
+    func setTarget()
+    func navigate(with route: HomeViewModelRoute)
 }
 
 final class HomeViewController: UIViewController {
@@ -22,10 +24,10 @@ final class HomeViewController: UIViewController {
     private let table = UITableView()
     private let tableHeaderTitle = RMLabel(color: .black, alignment: .left, fontSize: 30)
     private var searchController = UISearchController()
-    private var allView = RMView()
-    private var flaggedView = RMView()
-    private var allLabel = RMLabel(color: .lightGray, alignment: .left, fontSize: 20)
-    private var flaggedLabel = RMLabel(color: .lightGray, alignment: .left, fontSize: 20)
+    private var allView = RMView(color: .white, radius: 15)
+    private var flaggedView = RMView(color: .white, radius: 15)
+    private var allLabel = RMLabel(color: .gray, alignment: .left, fontSize: 20)
+    private var flaggedLabel = RMLabel(color: .gray, alignment: .left, fontSize: 20)
     private var allCountLabel = RMLabel(color: .black, alignment: .center, fontSize: 30)
     private var flaggedCountLabel = RMLabel(color: .black, alignment: .center, fontSize: 30)
     private var allIcon = RMImageView(setImage: UIImage(systemName: Constants.allIcon)!, setBackgroundColor: .darkGray)
@@ -42,10 +44,20 @@ final class HomeViewController: UIViewController {
         viewModel.viewDidLoad()
     }
 //MARK: - @objc actions
-    
+    @objc private func didTappedAddListButton() {
+        viewModel.didTappedAddListButton()
+    }
 }
 //MARK: - HomeViewInterface Methods
 extension HomeViewController: HomeViewInterface {
+    
+    func navigate(with route: HomeViewModelRoute) {
+        switch route {
+        case .addNewList:
+            let vc = AddNewListViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     func setUI() {
         view.backgroundColor = .systemGroupedBackground
         allLabel.text = "All"
@@ -58,6 +70,9 @@ extension HomeViewController: HomeViewInterface {
             view.addSubview(elements)
         }
     }
+    func setTarget() {
+        addListButton.addTarget(self, action: #selector(didTappedAddListButton), for: .touchUpInside)
+    }
     func setLayout() {
         allView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 5, left: 20, bottom: 5, right: 0), size: .init(width: 180, height: 120))
         allView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -240).isActive = true
@@ -69,17 +84,19 @@ extension HomeViewController: HomeViewInterface {
         
         flaggedLabel.anchor(top: flaggedView.topAnchor, leading: flaggedView.leadingAnchor, bottom: flaggedView.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 10, bottom: 5, right: 0), size: .init(width: 80, height: 30))
         
-        allCountLabel.anchor(top: allView.topAnchor, leading: nil, bottom: nil, trailing: allView.trailingAnchor, padding: .init(top: 15, left: 0, bottom: 0, right: 5), size: .init(width: 50, height: 30))
+        allCountLabel.anchor(top: allView.topAnchor, leading: nil, bottom: nil, trailing: allView.trailingAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 5), size: .init(width: 50, height: 30))
         allCountLabel.text = "10"
         
-        flaggedCountLabel.anchor(top: flaggedView.topAnchor, leading: nil, bottom: nil, trailing: flaggedView.trailingAnchor, padding: .init(top: 15, left: 0, bottom: 0, right: 5), size: .init(width: 50, height: 30))
+        flaggedCountLabel.anchor(top: flaggedView.topAnchor, leading: nil, bottom: nil, trailing: flaggedView.trailingAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 5), size: .init(width: 50, height: 30))
         flaggedCountLabel.text = "1"
         
-        allIcon.anchor(top: allView.topAnchor, leading: allView.leadingAnchor, bottom: allLabel.topAnchor, trailing: nil, padding: .init(top: 0, left: 10, bottom: 35, right: 0), size: .init(width: 40, height: 40))
+        allIcon.anchor(top: allView.topAnchor, leading: allView.leadingAnchor, bottom: allLabel.topAnchor, trailing: nil, padding: .init(top: 0, left: 10, bottom: 25, right: 0), size: .init(width: 50, height: 50))
+        allIcon.contentMode = .center
         
-        flaggedIcon.anchor(top: flaggedView.topAnchor, leading: flaggedView.leadingAnchor, bottom: flaggedLabel.topAnchor, trailing: nil, padding: .init(top: 0, left: 10, bottom: 35, right: 0), size: .init(width: 40, height: 40))
+        flaggedIcon.anchor(top: flaggedView.topAnchor, leading: flaggedView.leadingAnchor, bottom: flaggedLabel.topAnchor, trailing: nil, padding: .init(top: 0, left: 10, bottom: 25, right: 0), size: .init(width: 50, height: 50))
+        flaggedIcon.contentMode = .center
         
-        table.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 20), size: .init(width: 200, height: 450))
+        table.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 20), size: .init(width: 200, height: 480))
         table.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 120).isActive = true
         
         tableHeaderTitle.anchor(top: allView.bottomAnchor, leading: view.leadingAnchor, bottom: table.topAnchor, trailing: nil, padding: .init(top: 0, left: 25, bottom: 10, right: 0), size: .init(width: 120, height: 40))
@@ -97,7 +114,7 @@ extension HomeViewController: HomeViewInterface {
     func setTableView() {
         table.delegate = self
         table.dataSource = self
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(RemindersTableViewCell.self, forCellReuseIdentifier: ReuseID.remindersTableViewCell)
         table.separatorStyle = .singleLine
         table.separatorInset = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 0)
         table.showsVerticalScrollIndicator = false
@@ -109,8 +126,7 @@ extension HomeViewController: UITableViewDataSource {
         20
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Reminders"
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.remindersTableViewCell, for: indexPath) as! RemindersTableViewCell
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -121,7 +137,7 @@ extension HomeViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return .init(50)
+        return .init(60)
     }
 }
 //MARK: - UISearchControllerDelegate Methods
