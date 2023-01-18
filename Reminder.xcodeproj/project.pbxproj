@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE98C4C02978064E001DCEE8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98C4BF2978064E001DCEE8 /* CoreDataManager.swift */; };
+		CE98C4C329780771001DCEE8 /* ReminderList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98C4C129780770001DCEE8 /* ReminderList+CoreDataClass.swift */; };
+		CE98C4C429780771001DCEE8 /* ReminderList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98C4C229780771001DCEE8 /* ReminderList+CoreDataProperties.swift */; };
 		CEA15DFE297716E200CA6EC5 /* RMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA15DFD297716E200CA6EC5 /* RMTextField.swift */; };
 		CEB2ADB6297430610044B4CD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2ADB5297430610044B4CD /* HomeViewModel.swift */; };
 		CEB2ADB82974307B0044B4CD /* HomeViewModelContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2ADB72974307B0044B4CD /* HomeViewModelContracts.swift */; };
@@ -49,6 +52,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE98C4BF2978064E001DCEE8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		CE98C4C129780770001DCEE8 /* ReminderList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReminderList+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CE98C4C229780771001DCEE8 /* ReminderList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReminderList+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CEA15DFD297716E200CA6EC5 /* RMTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMTextField.swift; sourceTree = "<group>"; };
 		CEB2ADB5297430610044B4CD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CEB2ADB72974307B0044B4CD /* HomeViewModelContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelContracts.swift; sourceTree = "<group>"; };
@@ -140,7 +146,10 @@
 		CEB2ADB329742FE10044B4CD /* CoreDataManager */ = {
 			isa = PBXGroup;
 			children = (
+				CE98C4BF2978064E001DCEE8 /* CoreDataManager.swift */,
 				CEFE81EC2973156A008CE454 /* Reminder.xcdatamodeld */,
+				CE98C4C129780770001DCEE8 /* ReminderList+CoreDataClass.swift */,
+				CE98C4C229780771001DCEE8 /* ReminderList+CoreDataProperties.swift */,
 			);
 			path = CoreDataManager;
 			sourceTree = "<group>";
@@ -422,11 +431,14 @@
 				CEFE81E62973156A008CE454 /* SceneDelegate.swift in Sources */,
 				CEB2ADC429743E960044B4CD /* RMLabel.swift in Sources */,
 				CEB2ADC02974380E0044B4CD /* Extensions.swift in Sources */,
+				CE98C4C02978064E001DCEE8 /* CoreDataManager.swift in Sources */,
 				CEA15DFE297716E200CA6EC5 /* RMTextField.swift in Sources */,
 				CEB2ADC829745A610044B4CD /* Constans.swift in Sources */,
 				CEB2ADC62974596A0044B4CD /* RMImageView.swift in Sources */,
+				CE98C4C329780771001DCEE8 /* ReminderList+CoreDataClass.swift in Sources */,
 				CEC5144B2975AEFE005E6CC5 /* AddNewListViewController.swift in Sources */,
 				CEC51447297580EC005E6CC5 /* RemindersTableViewCell.swift in Sources */,
+				CE98C4C429780771001DCEE8 /* ReminderList+CoreDataProperties.swift in Sources */,
 				CEC514512975D0D0005E6CC5 /* NewListCollectionViewCell.swift in Sources */,
 				CEB2ADB6297430610044B4CD /* HomeViewModel.swift in Sources */,
 				CEB2ADCC29747D480044B4CD /* RMButton.swift in Sources */,

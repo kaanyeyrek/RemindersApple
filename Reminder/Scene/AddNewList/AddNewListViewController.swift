@@ -13,6 +13,11 @@ protocol AddNewListViewInterface: AnyObject {
     func setNavItem()
     func setCollection()
     func setLayout()
+    func showAlert()
+    func popToHomeVC()
+    var listColor: String? { get }
+    var listIcon: String? { get }
+    var listTitle: String? { get }
 }
 
 final class AddNewListViewController: UIViewController {
@@ -34,8 +39,8 @@ final class AddNewListViewController: UIViewController {
         viewModel.viewDidLoad()
     }
 //MARK: - @objc actions
-    @objc private func didTappedDoneButton() {
-        navigationController?.popToRootViewController(animated: true)
+    @objc private func didTappedAddButton() {
+        viewModel.didTappedAdd()
     }
     @objc private func didTappedCancelButton() {
         navigationController?.popToRootViewController(animated: true)
@@ -53,7 +58,7 @@ extension AddNewListViewController: AddNewListViewInterface {
         }
     }
     func setNavItem() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTappedDoneButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(didTappedAddButton))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(didTappedCancelButton))
     }
     func setCollection() {
@@ -77,6 +82,21 @@ extension AddNewListViewController: AddNewListViewInterface {
         newListField.anchor(top: newListIcon.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 20, bottom: 120, right: 20), size: .init(width: 100, height: 50))
         newListField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -210).isActive = true
     }
+    var listColor: String? {
+        savedAttributes.thumbnailColor
+    }
+    var listIcon: String? {
+        savedAttributes.thumbNailImage
+    }
+    var listTitle: String? {
+        newListField.text
+    }
+    func popToHomeVC() {
+        navigationController?.popToRootViewController(animated: true)
+    }
+    func showAlert() {
+        self.alert(message: "Failed to save", title: "Error!")
+    }
 }
 //MARK: - UICollectionView Datasource
 extension AddNewListViewController: UICollectionViewDataSource {
@@ -97,6 +117,14 @@ extension AddNewListViewController: UICollectionViewDataSource {
 //MARK: - UICollectionView Delegate
 extension AddNewListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row > 11 {
+            savedAttributes.thumbNailImage = listArray[indexPath.item]
+            newListIcon.image = UIImage(systemName: listArray[indexPath.item])
+            
+        } else {
+            savedAttributes.thumbnailColor = listArray[indexPath.item]
+            newListIcon.backgroundColor = UIColor(hex: listArray[indexPath.item])
+        }
     }
 }
 //MARK: - UICollection DelegateFlowLayout

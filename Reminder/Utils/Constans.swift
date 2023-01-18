@@ -26,3 +26,8 @@ public enum ListIcon {
     static let airplane = "airplane.circle.fill"
     static let bullet = "list.bullet"
 }
+public enum savedAttributes {
+    static var thumbnailColor = ""
+    static var thumbNailImage = ""
+}
+
