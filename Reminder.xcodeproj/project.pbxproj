@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE2FC637297BC8920020AF72 /* PriorityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FC636297BC8920020AF72 /* PriorityTableViewCell.swift */; };
+		CE2FC63E297BFCBC0020AF72 /* ReminderListPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FC63D297BFCBC0020AF72 /* ReminderListPresentation.swift */; };
+		CE2FC640297C00160020AF72 /* ListContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FC63F297C00160020AF72 /* ListContracts.swift */; };
+		CE64BA3D297AF09300628E11 /* RMTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE64BA3C297AF09300628E11 /* RMTextView.swift */; };
+		CE64BA3F297B000300628E11 /* ReminderListPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE64BA3E297B000300628E11 /* ReminderListPickerTableViewCell.swift */; };
+		CE64BA41297B285800628E11 /* FlagSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE64BA40297B285800628E11 /* FlagSwitchTableViewCell.swift */; };
+		CE8628B329792F370099891C /* DetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8628B229792F370099891C /* DetailBuilder.swift */; };
+		CE8628B629792FAC0099891C /* HomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8628B529792FAC0099891C /* HomeListViewController.swift */; };
+		CE8628B829792FEF0099891C /* HomeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8628B729792FEF0099891C /* HomeListViewModel.swift */; };
+		CE8628BF29796E680099891C /* NewReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8628BE29796E680099891C /* NewReminderViewController.swift */; };
+		CE8628C129796E720099891C /* NewReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8628C029796E720099891C /* NewReminderViewModel.swift */; };
+		CE8628C52979BC710099891C /* ReminderFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8628C42979BC710099891C /* ReminderFieldTableViewCell.swift */; };
+		CE8628C72979D0D00099891C /* RemindersNoteFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8628C62979D0D00099891C /* RemindersNoteFieldTableViewCell.swift */; };
 		CE98C4C02978064E001DCEE8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98C4BF2978064E001DCEE8 /* CoreDataManager.swift */; };
 		CE98C4C329780771001DCEE8 /* ReminderList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98C4C129780770001DCEE8 /* ReminderList+CoreDataClass.swift */; };
 		CE98C4C429780771001DCEE8 /* ReminderList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98C4C229780771001DCEE8 /* ReminderList+CoreDataProperties.swift */; };
@@ -52,6 +65,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE2FC636297BC8920020AF72 /* PriorityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityTableViewCell.swift; sourceTree = "<group>"; };
+		CE2FC63D297BFCBC0020AF72 /* ReminderListPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListPresentation.swift; sourceTree = "<group>"; };
+		CE2FC63F297C00160020AF72 /* ListContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListContracts.swift; sourceTree = "<group>"; };
+		CE64BA3C297AF09300628E11 /* RMTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMTextView.swift; sourceTree = "<group>"; };
+		CE64BA3E297B000300628E11 /* ReminderListPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListPickerTableViewCell.swift; sourceTree = "<group>"; };
+		CE64BA40297B285800628E11 /* FlagSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagSwitchTableViewCell.swift; sourceTree = "<group>"; };
+		CE8628B229792F370099891C /* DetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBuilder.swift; sourceTree = "<group>"; };
+		CE8628B529792FAC0099891C /* HomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListViewController.swift; sourceTree = "<group>"; };
+		CE8628B729792FEF0099891C /* HomeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListViewModel.swift; sourceTree = "<group>"; };
+		CE8628BE29796E680099891C /* NewReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderViewController.swift; sourceTree = "<group>"; };
+		CE8628C029796E720099891C /* NewReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderViewModel.swift; sourceTree = "<group>"; };
+		CE8628C42979BC710099891C /* ReminderFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderFieldTableViewCell.swift; sourceTree = "<group>"; };
+		CE8628C62979D0D00099891C /* RemindersNoteFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersNoteFieldTableViewCell.swift; sourceTree = "<group>"; };
 		CE98C4BF2978064E001DCEE8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CE98C4C129780770001DCEE8 /* ReminderList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReminderList+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CE98C4C229780771001DCEE8 /* ReminderList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReminderList+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -108,6 +134,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE64BA3B297AF04B00628E11 /* TextView */ = {
+			isa = PBXGroup;
+			children = (
+				CE64BA3C297AF09300628E11 /* RMTextView.swift */,
+			);
+			path = TextView;
+			sourceTree = "<group>";
+		};
+		CE8628B429792F6D0099891C /* List */ = {
+			isa = PBXGroup;
+			children = (
+				CE8628B529792FAC0099891C /* HomeListViewController.swift */,
+				CE8628B729792FEF0099891C /* HomeListViewModel.swift */,
+				CE8628B229792F370099891C /* DetailBuilder.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		CE8628BD29796DEA0099891C /* NewReminder */ = {
+			isa = PBXGroup;
+			children = (
+				CE8628BE29796E680099891C /* NewReminderViewController.swift */,
+				CE8628C029796E720099891C /* NewReminderViewModel.swift */,
+				CE2FC63F297C00160020AF72 /* ListContracts.swift */,
+			);
+			path = NewReminder;
+			sourceTree = "<group>";
+		};
 		CEA15DFC297716C100CA6EC5 /* Textfield */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,7 +174,9 @@
 			isa = PBXGroup;
 			children = (
 				CEC514482975AEC8005E6CC5 /* Home */,
+				CE8628B429792F6D0099891C /* List */,
 				CEC514492975AED9005E6CC5 /* AddNewList */,
+				CE8628BD29796DEA0099891C /* NewReminder */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -157,6 +213,7 @@
 		CEB2ADB42974304B0044B4CD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE2FC63D297BFCBC0020AF72 /* ReminderListPresentation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -164,6 +221,7 @@
 		CEB2ADB9297435160044B4CD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE64BA3B297AF04B00628E11 /* TextView */,
 				CEA15DFC297716C100CA6EC5 /* Textfield */,
 				CEB2ADCA29747A0F0044B4CD /* Button */,
 				CEB2ADBB2974356A0044B4CD /* View */,
@@ -220,6 +278,11 @@
 			children = (
 				CEC51446297580EC005E6CC5 /* RemindersTableViewCell.swift */,
 				CEC514502975D0D0005E6CC5 /* NewListCollectionViewCell.swift */,
+				CE8628C42979BC710099891C /* ReminderFieldTableViewCell.swift */,
+				CE8628C62979D0D00099891C /* RemindersNoteFieldTableViewCell.swift */,
+				CE64BA3E297B000300628E11 /* ReminderListPickerTableViewCell.swift */,
+				CE64BA40297B285800628E11 /* FlagSwitchTableViewCell.swift */,
+				CE2FC636297BC8920020AF72 /* PriorityTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -425,25 +488,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE2FC637297BC8920020AF72 /* PriorityTableViewCell.swift in Sources */,
 				CEFE81E82973156A008CE454 /* HomeViewController.swift in Sources */,
+				CE64BA41297B285800628E11 /* FlagSwitchTableViewCell.swift in Sources */,
+				CE8628BF29796E680099891C /* NewReminderViewController.swift in Sources */,
 				CEC5144D2975B16E005E6CC5 /* AddNewListViewModel.swift in Sources */,
 				CEFE81E42973156A008CE454 /* AppDelegate.swift in Sources */,
+				CE8628C52979BC710099891C /* ReminderFieldTableViewCell.swift in Sources */,
+				CE2FC63E297BFCBC0020AF72 /* ReminderListPresentation.swift in Sources */,
 				CEFE81E62973156A008CE454 /* SceneDelegate.swift in Sources */,
 				CEB2ADC429743E960044B4CD /* RMLabel.swift in Sources */,
 				CEB2ADC02974380E0044B4CD /* Extensions.swift in Sources */,
 				CE98C4C02978064E001DCEE8 /* CoreDataManager.swift in Sources */,
 				CEA15DFE297716E200CA6EC5 /* RMTextField.swift in Sources */,
+				CE2FC640297C00160020AF72 /* ListContracts.swift in Sources */,
+				CE8628C129796E720099891C /* NewReminderViewModel.swift in Sources */,
 				CEB2ADC829745A610044B4CD /* Constans.swift in Sources */,
+				CE8628B629792FAC0099891C /* HomeListViewController.swift in Sources */,
 				CEB2ADC62974596A0044B4CD /* RMImageView.swift in Sources */,
 				CE98C4C329780771001DCEE8 /* ReminderList+CoreDataClass.swift in Sources */,
 				CEC5144B2975AEFE005E6CC5 /* AddNewListViewController.swift in Sources */,
 				CEC51447297580EC005E6CC5 /* RemindersTableViewCell.swift in Sources */,
+				CE8628B829792FEF0099891C /* HomeListViewModel.swift in Sources */,
 				CE98C4C429780771001DCEE8 /* ReminderList+CoreDataProperties.swift in Sources */,
+				CE8628B329792F370099891C /* DetailBuilder.swift in Sources */,
 				CEC514512975D0D0005E6CC5 /* NewListCollectionViewCell.swift in Sources */,
 				CEB2ADB6297430610044B4CD /* HomeViewModel.swift in Sources */,
 				CEB2ADCC29747D480044B4CD /* RMButton.swift in Sources */,
 				CEFE81EE2973156A008CE454 /* Reminder.xcdatamodeld in Sources */,
 				CEB2ADBD2974359E0044B4CD /* RMView.swift in Sources */,
+				CE8628C72979D0D00099891C /* RemindersNoteFieldTableViewCell.swift in Sources */,
+				CE64BA3F297B000300628E11 /* ReminderListPickerTableViewCell.swift in Sources */,
+				CE64BA3D297AF09300628E11 /* RMTextView.swift in Sources */,
 				CEB2ADB82974307B0044B4CD /* HomeViewModelContracts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

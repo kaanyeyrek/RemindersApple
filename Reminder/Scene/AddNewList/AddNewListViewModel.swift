@@ -32,11 +32,13 @@ extension AddNewListViewModelController: AddNewListViewModelInterface {
         view?.setSubviews()
         view?.setCollection()
         view?.setLayout()
+        view?.endKeyboard()
+        view?.setTarget()
     }
     func didTappedAdd() {
-        if let title = view?.listTitle, !title.isEmpty,
-           let listColor = view?.listColor, !listColor.isEmpty,
-           let listIcon = view?.listIcon, !listIcon.isEmpty
+        if let title = view?.listTitle, !title.isEmpty, !title.contains(" "),
+           let listColor = view?.listColor,
+           let listIcon = view?.listIcon
         {
             guard let context = CoreDataManager().context else { return }
             let newList = ReminderList(context: context)

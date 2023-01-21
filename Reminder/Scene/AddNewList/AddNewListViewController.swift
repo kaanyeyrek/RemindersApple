@@ -15,6 +15,8 @@ protocol AddNewListViewInterface: AnyObject {
     func setLayout()
     func showAlert()
     func popToHomeVC()
+    func endKeyboard()
+    func setTarget()
     var listColor: String? { get }
     var listIcon: String? { get }
     var listTitle: String? { get }
@@ -24,7 +26,7 @@ final class AddNewListViewController: UIViewController {
 //MARK: - Injections
     private lazy var viewModel: AddNewListViewModelInterface = AddNewListViewModelController(view: self)
     private let newListIcon = RMImageView(setImage: UIImage(systemName: ListIcon.bookmark), setBackgroundColor: .link)
-    private let newListField = RMTextField(alignment: .center)
+    private let newListField = RMTextField(alignment: .center, setPlaceHolder: "Add new list title..")
 //MARK: - UI Elements
     private var collection: UICollectionView!
 //MARK: - UI Components
@@ -45,6 +47,16 @@ final class AddNewListViewController: UIViewController {
     @objc private func didTappedCancelButton() {
         navigationController?.popToRootViewController(animated: true)
     }
+    @objc private func didTappedEmptyForCloseKeyboard() {
+        self.view.endEditing(true)
+    }
+    @objc private func didChangeEnabledAddButton() {
+        if newListField.text == "" {
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        } else {
+            navigationItem.rightBarButtonItem?.isEnabled = true
+        }
+    }
 }
 //MARK: - AddNewListViewInterface Interface
 extension AddNewListViewController: AddNewListViewInterface {
@@ -57,8 +69,12 @@ extension AddNewListViewController: AddNewListViewInterface {
             view.addSubview(elements)
         }
     }
+    func setTarget() {
+        newListField.addTarget(self, action: #selector(didChangeEnabledAddButton), for: .editingChanged)
+    }
     func setNavItem() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(didTappedAddButton))
+        navigationItem.rightBarButtonItem?.isEnabled = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(didTappedCancelButton))
     }
     func setCollection() {
@@ -81,6 +97,7 @@ extension AddNewListViewController: AddNewListViewInterface {
         
         newListField.anchor(top: newListIcon.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 20, bottom: 120, right: 20), size: .init(width: 100, height: 50))
         newListField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -210).isActive = true
+        newListField.layer.borderWidth = 0.5
     }
     var listColor: String? {
         savedAttributes.thumbnailColor
@@ -95,7 +112,13 @@ extension AddNewListViewController: AddNewListViewInterface {
         navigationController?.popToRootViewController(animated: true)
     }
     func showAlert() {
-        self.alert(message: "Failed to save", title: "Error!")
+        self.alert(message: "Please fill in the all field.", title: "Error!")
+    }
+    func endKeyboard() {
+       let gesture = UITapGestureRecognizer(target: self, action: #selector(didTappedEmptyForCloseKeyboard))
+        gesture.view?.isUserInteractionEnabled = true
+        gesture.delegate = self
+        view.addGestureRecognizer(gesture)
     }
 }
 //MARK: - UICollectionView Datasource
@@ -117,7 +140,7 @@ extension AddNewListViewController: UICollectionViewDataSource {
 //MARK: - UICollectionView Delegate
 extension AddNewListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row > 11 {
+        if indexPath.item > 11 {
             savedAttributes.thumbNailImage = listArray[indexPath.item]
             newListIcon.image = UIImage(systemName: listArray[indexPath.item])
             
@@ -127,7 +150,7 @@ extension AddNewListViewController: UICollectionViewDelegate {
         }
     }
 }
-//MARK: - UICollection DelegateFlowLayout
+//MARK: - UICollection DelegateFlowLayout Methods
 extension AddNewListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         .init(top: 0, left: 20, bottom: 0, right: 20)
@@ -139,4 +162,12 @@ extension AddNewListViewController: UICollectionViewDelegateFlowLayout {
         15
     }
 }
-
+//MARK: - UIGestureRecognizerDelegate Methods
+extension AddNewListViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if view.frame.contains(touch.location(in: collection)) {
+            return false
+        }
+        return true
+    }
+}

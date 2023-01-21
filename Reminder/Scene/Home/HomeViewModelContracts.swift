@@ -13,4 +13,6 @@ enum HomeViewModelContracts {
 
 enum HomeViewModelRoute {
     case addNewList
+    case detail
+    case addNewReminder
 }

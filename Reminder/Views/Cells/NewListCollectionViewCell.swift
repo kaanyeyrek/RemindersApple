@@ -20,7 +20,9 @@ class NewListCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     private func addSubviews() {
-        self.addSubview(circleImageView)
+        [circleImageView].forEach({ elements in
+            self.addSubview(elements)
+        })
     }
     private func layout() {
         circleImageView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .init(width: 50, height: 50))

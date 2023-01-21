@@ -12,10 +12,16 @@ public enum Constants {
     static let flaggedIcon = "flag.fill"
     static let addNewReminder = "plus.circle.fill"
     static let cellIcon = "list.bullet"
+    static let flagImage =  "flag.fill"
 }
 public enum ReuseID {
     static let remindersTableViewCell = "RemindersTableViewCell"
     static let newListCollectionCell = "NewListCollectionViewCell"
+    static let reminderFieldTableViewCell = "ReminderFieldTableViewCell"
+    static let remindersNoteFieldTableViewCell = "RemindersNoteFieldTableViewCell"
+    static let reminderListPickerTableViewCell = "ReminderListPickerTableViewCell"
+    static let flagSwitchTableViewCell = "FlagSwitchTableViewCell"
+    static let priorityTableViewCell = "PriorityTableViewCell"
 }
 public enum ListIcon {
     static let list = "football.circle.fill"
@@ -24,10 +30,9 @@ public enum ListIcon {
     static let gift = "gift.circle.fill"
     static let birthday = "basketball.circle.fill"
     static let airplane = "airplane.circle.fill"
-    static let bullet = "list.bullet"
 }
 public enum savedAttributes {
-    static var thumbnailColor = ""
-    static var thumbNailImage = ""
+    static var thumbnailColor = "#1273DEff"
+    static var thumbNailImage = "bookmark.circle.fill"
 }
 

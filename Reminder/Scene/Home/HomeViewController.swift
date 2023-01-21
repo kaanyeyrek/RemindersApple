@@ -14,6 +14,7 @@ protocol HomeViewInterface: AnyObject {
     func setSearchController()
     func setTableView()
     func setTarget()
+    func reloadData()
     func navigate(with route: HomeViewModelRoute)
 }
 
@@ -47,6 +48,9 @@ final class HomeViewController: UIViewController {
     @objc private func didTappedAddListButton() {
         viewModel.didTappedAddListButton()
     }
+    @objc private func didTappedNewReminderButton() {
+        viewModel.didTappedNewReminderButton()
+    }
 }
 //MARK: - HomeViewInterface Methods
 extension HomeViewController: HomeViewInterface {
@@ -55,6 +59,12 @@ extension HomeViewController: HomeViewInterface {
         switch route {
         case .addNewList:
             let vc = AddNewListViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case .detail:
+            let vc = HomeListViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case .addNewReminder:
+            let vc = NewReminderViewController()
             navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -72,6 +82,7 @@ extension HomeViewController: HomeViewInterface {
     }
     func setTarget() {
         addListButton.addTarget(self, action: #selector(didTappedAddListButton), for: .touchUpInside)
+        newReminderButton.addTarget(self, action: #selector(didTappedNewReminderButton), for: .touchUpInside)
     }
     func setLayout() {
         allView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 5, left: 20, bottom: 5, right: 0), size: .init(width: 180, height: 120))
@@ -119,22 +130,29 @@ extension HomeViewController: HomeViewInterface {
         table.separatorInset = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 0)
         table.showsVerticalScrollIndicator = false
     }
+    func reloadData() {
+        table.reloadData()
+    }
 }
 //MARK: - UITableView Datasource Methods
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        20
+        viewModel.numberOfRowsInSection
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.remindersTableViewCell, for: indexPath) as! RemindersTableViewCell
+        guard let list = viewModel.cellForItem(at: indexPath) else { return cell }
         cell.accessoryType = .disclosureIndicator
+        cell.setTitle(with: list)
+        cell.setIcon(with: list)
+        cell.setIconBackgroundColor(with: list)
         return cell
     }
 }
 //MARK: - UITableView Delegate Methods
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.didSelectForRow(at: indexPath.row)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return .init(60)

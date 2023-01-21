@@ -11,18 +11,27 @@ protocol HomeViewModelInterface {
     func viewWillAppear()
     func viewDidLoad()
     func didTappedAddListButton()
+    func didTappedNewReminderButton()
+    var numberOfRowsInSection: Int { get }
+    func cellForItem(at indexPath: IndexPath) -> ReminderList?
+    func didSelectForRow(at index: Int)
 }
 
 final class HomeViewModel {
     private weak var view: HomeViewInterface?
+    private var reminderModel: [ReminderList] = []
+    private var manager: CoreDataManagerInterface
     
-    init(view: HomeViewInterface) {
+    init(view: HomeViewInterface, manager: CoreDataManagerInterface = CoreDataManager()) {
         self.view = view
+        self.manager = manager
     }
 }
 //MARK: - HomeViewModelInterface Methods
 extension HomeViewModel: HomeViewModelInterface {
     func viewWillAppear() {
+        reminderModel = manager.fetch() ?? []
+        view?.reloadData()
     }
     func viewDidLoad() {
         view?.setUI()
@@ -34,6 +43,18 @@ extension HomeViewModel: HomeViewModelInterface {
     }
     func didTappedAddListButton() {
         view?.navigate(with: .addNewList)
+    }
+    var numberOfRowsInSection: Int {
+        reminderModel.count
+    }
+    func cellForItem(at indexPath: IndexPath) -> ReminderList? {
+        reminderModel.count > indexPath.row ? reminderModel[indexPath.row] : nil
+    }
+    func didSelectForRow(at index: Int) {
+        view?.navigate(with: .detail)
+    }
+    func didTappedNewReminderButton() {
+        view?.navigate(with: .addNewReminder)
     }
 }
 
