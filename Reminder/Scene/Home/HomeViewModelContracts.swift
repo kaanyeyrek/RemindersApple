@@ -7,12 +7,8 @@
 
 import Foundation
 
-enum HomeViewModelContracts {
-    
-}
-
 enum HomeViewModelRoute {
     case addNewList
-    case detail
     case addNewReminder
+    case detail(viewModel: HomeListViewModelInterface)
 }

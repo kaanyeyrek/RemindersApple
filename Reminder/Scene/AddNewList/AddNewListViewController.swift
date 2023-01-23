@@ -20,6 +20,7 @@ protocol AddNewListViewInterface: AnyObject {
     var listColor: String? { get }
     var listIcon: String? { get }
     var listTitle: String? { get }
+    var listID: UUID { get }
 }
 
 final class AddNewListViewController: UIViewController {
@@ -100,13 +101,16 @@ extension AddNewListViewController: AddNewListViewInterface {
         newListField.layer.borderWidth = 0.5
     }
     var listColor: String? {
-        savedAttributes.thumbnailColor
+        return savedAttributes.thumbnailColor
     }
     var listIcon: String? {
-        savedAttributes.thumbNailImage
+        return savedAttributes.thumbNailImage
     }
     var listTitle: String? {
-        newListField.text
+        return newListField.text
+    }
+    var listID: UUID {
+        return UUID()
     }
     func popToHomeVC() {
         navigationController?.popToRootViewController(animated: true)

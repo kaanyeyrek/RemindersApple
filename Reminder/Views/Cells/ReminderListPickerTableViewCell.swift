@@ -31,7 +31,6 @@ class ReminderListPickerTableViewCell: UITableViewCell {
         listLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         listLabel.text = "List"
         listCategoryLabel.anchor(top: self.topAnchor, leading: nil, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 15), size: .init(width: 80, height: 50))
-        listCategoryLabel.text = "None"
         circleLabel.anchor(top: self.topAnchor, leading: listLabel.trailingAnchor, bottom: self.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 0, bottom: 18, right: 0), size: .init(width: 40, height: 40))
         circleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 110).isActive = true
         circleLabel.text = "."

@@ -17,6 +17,7 @@ protocol NewReminderViewModelInterface {
     var numberOfRowsInComponent: Int { get }
     func viewWillAppear()
     func updateData()
+    func didTapAddedButton()
 }
 
 final class NewReminderViewModel {
@@ -86,4 +87,30 @@ extension NewReminderViewModel: NewReminderViewModelInterface {
     var numberOfRowsInComponent: Int {
         return currentLists.count
     }
+    func didTapAddedButton() {
+        if let title = view?.titleReminder, !title.isEmpty,
+            let note = view?.noteReminder, !note.isEmpty,
+            let priority = view?.selectedPriority,
+            let list = view?.selectedList,
+            let id = view?.reminderID.uuidString {
+            
+            guard let context = CoreDataManager().context else { return }
+            let remind = Reminder(context: context)
+            for newRemind in currentLists {
+                let remindList = newRemind
+                remind.flagged = ((view?.flagBool) != nil)
+                remind.title = title
+                remind.notes = note
+                remind.priority = priority
+                remind.list = list
+                remind.relation = remindList
+                remind.id = id
+                CoreDataManager().save()
+                view?.popToRootHome()
+            }
+        } else {
+            view?.setAlert()
+        }
+    }
 }
+

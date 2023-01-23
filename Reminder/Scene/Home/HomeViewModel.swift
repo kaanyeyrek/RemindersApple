@@ -51,7 +51,8 @@ extension HomeViewModel: HomeViewModelInterface {
         reminderModel.count > indexPath.row ? reminderModel[indexPath.row] : nil
     }
     func didSelectForRow(at index: Int) {
-        view?.navigate(with: .detail)
+        let viewModel = HomeListViewModel(lists: reminderModel[index])
+        view?.navigate(with: .detail(viewModel: viewModel))
     }
     func didTappedNewReminderButton() {
         view?.navigate(with: .addNewReminder)

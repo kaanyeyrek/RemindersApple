@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE059399297D766C000AEF06 /* ReminderList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE059395297D766C000AEF06 /* ReminderList+CoreDataClass.swift */; };
+		CE05939A297D766C000AEF06 /* ReminderList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE059396297D766C000AEF06 /* ReminderList+CoreDataProperties.swift */; };
+		CE05939B297D766C000AEF06 /* Reminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE059397297D766C000AEF06 /* Reminder+CoreDataClass.swift */; };
+		CE05939C297D766C000AEF06 /* Reminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE059398297D766C000AEF06 /* Reminder+CoreDataProperties.swift */; };
+		CE05939E297DCE13000AEF06 /* HomeListContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE05939D297DCE13000AEF06 /* HomeListContracts.swift */; };
 		CE2FC637297BC8920020AF72 /* PriorityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FC636297BC8920020AF72 /* PriorityTableViewCell.swift */; };
 		CE2FC63E297BFCBC0020AF72 /* ReminderListPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FC63D297BFCBC0020AF72 /* ReminderListPresentation.swift */; };
 		CE2FC640297C00160020AF72 /* ListContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FC63F297C00160020AF72 /* ListContracts.swift */; };
@@ -21,8 +26,6 @@
 		CE8628C52979BC710099891C /* ReminderFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8628C42979BC710099891C /* ReminderFieldTableViewCell.swift */; };
 		CE8628C72979D0D00099891C /* RemindersNoteFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8628C62979D0D00099891C /* RemindersNoteFieldTableViewCell.swift */; };
 		CE98C4C02978064E001DCEE8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98C4BF2978064E001DCEE8 /* CoreDataManager.swift */; };
-		CE98C4C329780771001DCEE8 /* ReminderList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98C4C129780770001DCEE8 /* ReminderList+CoreDataClass.swift */; };
-		CE98C4C429780771001DCEE8 /* ReminderList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98C4C229780771001DCEE8 /* ReminderList+CoreDataProperties.swift */; };
 		CEA15DFE297716E200CA6EC5 /* RMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA15DFD297716E200CA6EC5 /* RMTextField.swift */; };
 		CEB2ADB6297430610044B4CD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2ADB5297430610044B4CD /* HomeViewModel.swift */; };
 		CEB2ADB82974307B0044B4CD /* HomeViewModelContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2ADB72974307B0044B4CD /* HomeViewModelContracts.swift */; };
@@ -65,6 +68,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE059395297D766C000AEF06 /* ReminderList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ReminderList+CoreDataClass.swift"; path = "../../ReminderList+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CE059396297D766C000AEF06 /* ReminderList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ReminderList+CoreDataProperties.swift"; path = "../../ReminderList+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CE059397297D766C000AEF06 /* Reminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reminder+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CE059398297D766C000AEF06 /* Reminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reminder+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CE05939D297DCE13000AEF06 /* HomeListContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListContracts.swift; sourceTree = "<group>"; };
 		CE2FC636297BC8920020AF72 /* PriorityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityTableViewCell.swift; sourceTree = "<group>"; };
 		CE2FC63D297BFCBC0020AF72 /* ReminderListPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListPresentation.swift; sourceTree = "<group>"; };
 		CE2FC63F297C00160020AF72 /* ListContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListContracts.swift; sourceTree = "<group>"; };
@@ -79,8 +87,6 @@
 		CE8628C42979BC710099891C /* ReminderFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderFieldTableViewCell.swift; sourceTree = "<group>"; };
 		CE8628C62979D0D00099891C /* RemindersNoteFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersNoteFieldTableViewCell.swift; sourceTree = "<group>"; };
 		CE98C4BF2978064E001DCEE8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		CE98C4C129780770001DCEE8 /* ReminderList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReminderList+CoreDataClass.swift"; sourceTree = "<group>"; };
-		CE98C4C229780771001DCEE8 /* ReminderList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReminderList+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CEA15DFD297716E200CA6EC5 /* RMTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMTextField.swift; sourceTree = "<group>"; };
 		CEB2ADB5297430610044B4CD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CEB2ADB72974307B0044B4CD /* HomeViewModelContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelContracts.swift; sourceTree = "<group>"; };
@@ -147,6 +153,7 @@
 			children = (
 				CE8628B529792FAC0099891C /* HomeListViewController.swift */,
 				CE8628B729792FEF0099891C /* HomeListViewModel.swift */,
+				CE05939D297DCE13000AEF06 /* HomeListContracts.swift */,
 				CE8628B229792F370099891C /* DetailBuilder.swift */,
 			);
 			path = List;
@@ -204,8 +211,10 @@
 			children = (
 				CE98C4BF2978064E001DCEE8 /* CoreDataManager.swift */,
 				CEFE81EC2973156A008CE454 /* Reminder.xcdatamodeld */,
-				CE98C4C129780770001DCEE8 /* ReminderList+CoreDataClass.swift */,
-				CE98C4C229780771001DCEE8 /* ReminderList+CoreDataProperties.swift */,
+				CE059395297D766C000AEF06 /* ReminderList+CoreDataClass.swift */,
+				CE059396297D766C000AEF06 /* ReminderList+CoreDataProperties.swift */,
+				CE059397297D766C000AEF06 /* Reminder+CoreDataClass.swift */,
+				CE059398297D766C000AEF06 /* Reminder+CoreDataProperties.swift */,
 			);
 			path = CoreDataManager;
 			sourceTree = "<group>";
@@ -490,7 +499,9 @@
 			files = (
 				CE2FC637297BC8920020AF72 /* PriorityTableViewCell.swift in Sources */,
 				CEFE81E82973156A008CE454 /* HomeViewController.swift in Sources */,
+				CE059399297D766C000AEF06 /* ReminderList+CoreDataClass.swift in Sources */,
 				CE64BA41297B285800628E11 /* FlagSwitchTableViewCell.swift in Sources */,
+				CE05939C297D766C000AEF06 /* Reminder+CoreDataProperties.swift in Sources */,
 				CE8628BF29796E680099891C /* NewReminderViewController.swift in Sources */,
 				CEC5144D2975B16E005E6CC5 /* AddNewListViewModel.swift in Sources */,
 				CEFE81E42973156A008CE454 /* AppDelegate.swift in Sources */,
@@ -502,21 +513,22 @@
 				CE98C4C02978064E001DCEE8 /* CoreDataManager.swift in Sources */,
 				CEA15DFE297716E200CA6EC5 /* RMTextField.swift in Sources */,
 				CE2FC640297C00160020AF72 /* ListContracts.swift in Sources */,
+				CE05939E297DCE13000AEF06 /* HomeListContracts.swift in Sources */,
 				CE8628C129796E720099891C /* NewReminderViewModel.swift in Sources */,
 				CEB2ADC829745A610044B4CD /* Constans.swift in Sources */,
 				CE8628B629792FAC0099891C /* HomeListViewController.swift in Sources */,
 				CEB2ADC62974596A0044B4CD /* RMImageView.swift in Sources */,
-				CE98C4C329780771001DCEE8 /* ReminderList+CoreDataClass.swift in Sources */,
 				CEC5144B2975AEFE005E6CC5 /* AddNewListViewController.swift in Sources */,
+				CE05939A297D766C000AEF06 /* ReminderList+CoreDataProperties.swift in Sources */,
 				CEC51447297580EC005E6CC5 /* RemindersTableViewCell.swift in Sources */,
 				CE8628B829792FEF0099891C /* HomeListViewModel.swift in Sources */,
-				CE98C4C429780771001DCEE8 /* ReminderList+CoreDataProperties.swift in Sources */,
 				CE8628B329792F370099891C /* DetailBuilder.swift in Sources */,
 				CEC514512975D0D0005E6CC5 /* NewListCollectionViewCell.swift in Sources */,
 				CEB2ADB6297430610044B4CD /* HomeViewModel.swift in Sources */,
 				CEB2ADCC29747D480044B4CD /* RMButton.swift in Sources */,
 				CEFE81EE2973156A008CE454 /* Reminder.xcdatamodeld in Sources */,
 				CEB2ADBD2974359E0044B4CD /* RMView.swift in Sources */,
+				CE05939B297D766C000AEF06 /* Reminder+CoreDataClass.swift in Sources */,
 				CE8628C72979D0D00099891C /* RemindersNoteFieldTableViewCell.swift in Sources */,
 				CE64BA3F297B000300628E11 /* ReminderListPickerTableViewCell.swift in Sources */,
 				CE64BA3D297AF09300628E11 /* RMTextView.swift in Sources */,
@@ -696,6 +708,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -723,6 +736,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

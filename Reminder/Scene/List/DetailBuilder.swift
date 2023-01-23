@@ -8,8 +8,8 @@
 import Foundation
 
 final class DetailBuilder {
-    static func make() -> HomeListViewController {
-        let vc = HomeListViewController()
+    static func make(viewModel: HomeListViewModelInterface) -> HomeListViewController {
+        let vc = HomeListViewController(viewModel: viewModel)
         return vc
     }
 }

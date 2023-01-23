@@ -17,6 +17,14 @@ protocol NewReminderViewInterface: AnyObject {
     func reloadTable()
     func handleOutput(output: ListOutput)
     func setToolBar()
+    func popToRootHome()
+    func setAlert()
+    var titleReminder: String? { get }
+    var noteReminder: String? { get }
+    var flagBool: Bool? { get }
+    var selectedList: String? { get}
+    var selectedPriority: String? { get }
+    var reminderID: UUID { get }
 }
 
 final class NewReminderViewController: UIViewController {
@@ -33,6 +41,9 @@ final class NewReminderViewController: UIViewController {
     private var selectedPriorityName = ""
     private var currentPicker: Int?
     private var currentLists = [ReminderListPresentation]()
+    private var isFlagged = true
+    private var titles: String?
+    private var note: String?
 //MARK: - LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,10 +55,10 @@ final class NewReminderViewController: UIViewController {
     }
 //MARK: - @objc actions
     @objc private func didTappedCancel() {
-        navigationController?.popToRootViewController(animated: true)
+        self.popToRootHome()
     }
     @objc private func didTappedAdd() {
-        navigationController?.popToRootViewController(animated: true)
+        viewModel.didTapAddedButton()
     }
     @objc private func didTappedDoneButton() {
         toolBar.removeFromSuperview()
@@ -55,14 +66,12 @@ final class NewReminderViewController: UIViewController {
         priorityPicker.removeFromSuperview()
         if currentPicker == 1 {
             self.selectedListName = (currentLists[listPicker.selectedRow(inComponent: 0)].title)!
-            toolBarLabel.text = "List"
             DispatchQueue.main.async {
                 self.reloadTable()
             }
         }
         if currentPicker == 3 {
             self.selectedPriorityName = (priorityList[priorityPicker.selectedRow(inComponent: 0)])
-            toolBarLabel.text = "Priority"
             DispatchQueue.main.async {
                 self.reloadTable()
             }
@@ -111,6 +120,9 @@ extension NewReminderViewController: NewReminderViewInterface {
         table.register(PriorityTableViewCell.self, forCellReuseIdentifier: ReuseID.priorityTableViewCell)
         table.showsVerticalScrollIndicator = false
     }
+    func setAlert() {
+        self.alert(message: "Please fill in the all field.", title: "Error!")
+    }
     func createPicker(with picker: UIPickerView) {
         picker.backgroundColor = .systemBackground
         picker.contentMode = .center
@@ -129,6 +141,27 @@ extension NewReminderViewController: NewReminderViewInterface {
         toolBar.setItems([cancelButton, flexibleSpace, labelButton, flexibleSpace, doneButton], animated: false)
         view.addSubview(toolBar)
     }
+    func popToRootHome() {
+        navigationController?.popToRootViewController(animated: true)
+    }
+    var titleReminder: String? {
+        return titles
+    }
+    var noteReminder: String? {
+        return note
+    }
+    var flagBool: Bool? {
+        return isFlagged
+    }
+    var selectedList: String? {
+        return selectedListName
+    }
+    var selectedPriority: String? {
+        return selectedPriorityName
+    }
+    var reminderID: UUID {
+        return UUID()
+    }
 }
 //MARK: - UITableView DataSource
 extension NewReminderViewController: UITableViewDataSource {
@@ -144,10 +177,12 @@ extension NewReminderViewController: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.reminderFieldTableViewCell, for: indexPath) as! ReminderFieldTableViewCell
                 cell.contentView.isUserInteractionEnabled = false
                 cell.selectionStyle = .none
+                cell.delegate = self
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.remindersNoteFieldTableViewCell, for: indexPath) as! RemindersNoteFieldTableViewCell
                 cell.contentView.isUserInteractionEnabled = false
+                cell.delegate = self
                 cell.selectionStyle = .none
             return cell
         }
@@ -162,6 +197,7 @@ extension NewReminderViewController: UITableViewDataSource {
         if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.flagSwitchTableViewCell, for: indexPath) as! FlagSwitchTableViewCell
             cell.selectionStyle = .none
+            cell.delegate = self
             cell.contentView.isUserInteractionEnabled = false
             return cell
         }
@@ -225,5 +261,23 @@ extension NewReminderViewController: UIPickerViewDataSource {
         } else {
             return priorityList.count
         }
+    }
+}
+//MARK: - Reminder FlagSwitched Delegate
+extension NewReminderViewController: FlagSwitchedDelegate {
+    func switchedFlag(with: Bool) {
+        isFlagged = with
+    }
+}
+//MARK: - Reminder NoteTextView Delegate
+extension NewReminderViewController: ReminderNoteDelegate {
+    func reminderNote(with: String) {
+        note = with
+    }
+}
+//MARK: - Reminder TitleField Delegate
+extension NewReminderViewController: ReminderTitleDelegate {
+    func reminderTitle(with: String) {
+        titles = with
     }
 }

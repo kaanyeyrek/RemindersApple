@@ -60,8 +60,8 @@ extension HomeViewController: HomeViewInterface {
         case .addNewList:
             let vc = AddNewListViewController()
             navigationController?.pushViewController(vc, animated: true)
-        case .detail:
-            let vc = HomeListViewController()
+        case .detail(let viewModel):
+            let vc = DetailBuilder.make(viewModel: viewModel)
             navigationController?.pushViewController(vc, animated: true)
         case .addNewReminder:
             let vc = NewReminderViewController()

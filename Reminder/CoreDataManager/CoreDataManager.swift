@@ -12,6 +12,8 @@ protocol CoreDataManagerInterface {
     func save()
     func fetch() -> [ReminderList]?
     func delete(model: ReminderList)
+    func fetchRemindRelation() -> [Reminder]?
+    func deleteRemindRelation(model: Reminder)
 }
 
 final class CoreDataManager {
@@ -40,6 +42,20 @@ extension CoreDataManager: CoreDataManagerInterface {
         }
     }
     func delete(model: ReminderList) {
+        context?.delete(model)
+        try? context?.save()
+    }
+//MARK: - Relation Methods
+    func fetchRemindRelation() -> [Reminder]? {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Reminder")
+        do {
+            let fetchedTask = try context?.fetch(request) as? [Reminder]
+            return fetchedTask?.reversed()
+        } catch {
+            fatalError("failed fetch")
+        }
+    }
+    func deleteRemindRelation(model: Reminder) {
         context?.delete(model)
         try? context?.save()
     }
