@@ -26,6 +26,7 @@ final class AddNewListViewModelController {
 extension AddNewListViewModelController: AddNewListViewModelInterface {
     func viewWillAppear() {
         view?.setNavItem()
+        view?.setNavBarTitleColor()
     }
     func viewDidLoad() {
         view?.setUI()

@@ -17,6 +17,7 @@ protocol AddNewListViewInterface: AnyObject {
     func popToHomeVC()
     func endKeyboard()
     func setTarget()
+    func setNavBarTitleColor()
     var listColor: String? { get }
     var listIcon: String? { get }
     var listTitle: String? { get }
@@ -123,6 +124,9 @@ extension AddNewListViewController: AddNewListViewInterface {
         gesture.view?.isUserInteractionEnabled = true
         gesture.delegate = self
         view.addGestureRecognizer(gesture)
+    }
+    func setNavBarTitleColor() {
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
 }
 //MARK: - UICollectionView Datasource

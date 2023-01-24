@@ -16,6 +16,7 @@ protocol HomeViewInterface: AnyObject {
     func setTarget()
     func reloadData()
     func navigate(with route: HomeViewModelRoute)
+    func setHandleOutput(output: HomeViewModelOutput)
 }
 
 final class HomeViewController: UIViewController {
@@ -25,8 +26,8 @@ final class HomeViewController: UIViewController {
     private let table = UITableView()
     private let tableHeaderTitle = RMLabel(color: .black, alignment: .left, fontSize: 30)
     private var searchController = UISearchController()
-    private var allView = RMView(color: .white, radius: 15)
-    private var flaggedView = RMView(color: .white, radius: 15)
+    private var allView = RMView(color: .white, radius: 15, message: "")
+    private var flaggedView = RMView(color: .white, radius: 15, message: "")
     private var allLabel = RMLabel(color: .gray, alignment: .left, fontSize: 20)
     private var flaggedLabel = RMLabel(color: .gray, alignment: .left, fontSize: 20)
     private var allCountLabel = RMLabel(color: .black, alignment: .center, fontSize: 30)
@@ -54,7 +55,16 @@ final class HomeViewController: UIViewController {
 }
 //MARK: - HomeViewInterface Methods
 extension HomeViewController: HomeViewInterface {
-    
+    func setHandleOutput(output: HomeViewModelOutput) {
+        switch output {
+        case .showEmptyView(let message):
+            DispatchQueue.main.async {
+                self.showEmptyStateView(with: message, at: self.table)
+            }
+        case .removeEmpty:
+            self.removeEmptyStateView()
+        }
+    }
     func navigate(with route: HomeViewModelRoute) {
         switch route {
         case .addNewList:

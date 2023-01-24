@@ -37,6 +37,7 @@ extension NewReminderViewModel: NewReminderViewModelInterface {
         view?.handleOutput(output: output)
     }
     func viewWillAppear() {
+        view?.setNavBarTitleColor()
         currentLists = manager.fetch() ?? []
         updateData()
     }

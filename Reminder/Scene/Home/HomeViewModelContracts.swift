@@ -12,3 +12,7 @@ enum HomeViewModelRoute {
     case addNewReminder
     case detail(viewModel: HomeListViewModelInterface)
 }
+enum HomeViewModelOutput {
+    case showEmptyView(message: String)
+    case removeEmpty
+}

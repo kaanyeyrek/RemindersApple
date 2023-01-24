@@ -13,6 +13,10 @@ protocol HomeListViewInterface: AnyObject {
     func setTableConfigure()
     func setLayout()
     func setRegisterTable()
+    func setHandlePresentation(output: HomeListOutput)
+    func tableReload()
+    func setTitle(model: ReminderList)
+    func setNavBarTitleColor(model: ReminderList)
 }
 
 final class HomeListViewController: UIViewController {
@@ -28,6 +32,7 @@ final class HomeListViewController: UIViewController {
     }
 //MARK: - UI Elements
     private let table = UITableView()
+    private var remindPresentation = [ReminderPresentation]()
 //MARK: - LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -62,6 +67,28 @@ extension HomeListViewController: HomeListViewInterface {
     func setRegisterTable() {
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
+    func tableReload() {
+        table.reloadData()
+    }
+    func setTitle(model: ReminderList) {
+        title = model.title?.capitalized
+    }
+    func setNavBarTitleColor(model: ReminderList) {
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(hex: model.color ?? "")!]
+    }
+    func setHandlePresentation(output: HomeListOutput) {
+        switch output {
+        case .loadRemindPresentation(let presentation):
+            self.remindPresentation = presentation
+            self.tableReload()
+        case .showEmptyView(let message):
+            DispatchQueue.main.async {
+                self.showEmptyStateView(with: message, at: self.view)
+            }
+        case .removeEmpty:
+            self.removeEmptyStateView()
+        }
+    }
 }
 //MARK: - UITableViewDataSource
 extension HomeListViewController: UITableViewDataSource {
@@ -70,8 +97,8 @@ extension HomeListViewController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        guard let model = viewModel.cellForRow(at: indexPath) else { return cell }
-        cell.textLabel?.text = model.title
+        let model = remindPresentation[indexPath.row]
+        cell.textLabel?.text = model.remindTitle
         return cell
     }
 }

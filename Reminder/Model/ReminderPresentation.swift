@@ -2,16 +2,26 @@
 //  ReminderPresentation.swift
 //  Reminder
 //
-//  Created by Kaan Yeyrek on 1/19/23.
+//  Created by Kaan Yeyrek on 1/24/23.
 //
 
 import Foundation
 
 struct ReminderPresentation {
-    let title: String
+    let remindFlagged: Bool?
+    let remindTitle: String?
+    let remindNotes: String?
+    let remindPriority: String?
+    let remindList: String?
+    let remindID: String?
     
-    init(model: ReminderList) {
-        self.title = model.title ?? ""
+    init(model: Reminder) {
+        self.remindFlagged = model.flagged
+        self.remindTitle = model.title
+        self.remindNotes = model.notes
+        self.remindPriority = model.priority
+        self.remindList = model.list
+        self.remindID = model.id
     }
 }
 

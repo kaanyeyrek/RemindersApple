@@ -9,13 +9,14 @@ import Foundation
 
 protocol HomeListViewModelInterface {
     var view: HomeListViewInterface? { get set }
+//    func cellForRow(at indexPath: IndexPath) -> Reminder?
     func viewDidLoad()
     func registerTable()
     func heightForRowAt(at: IndexPath) -> CGFloat
     var numberOfRow: Int { get }
     func fetchData()
     func viewWillAppear()
-    func cellForRow(at indexPath: IndexPath) -> Reminder?
+   
 }
 
 final class HomeListViewModel {
@@ -33,12 +34,14 @@ final class HomeListViewModel {
 extension HomeListViewModel: HomeListViewModelInterface {
     func viewWillAppear() {
         self.fetchData()
+        view?.setNavBarTitleColor(model: lists)
     }
     func viewDidLoad() {
         view?.setUI()
         view?.setSubviews()
         view?.setLayout()
         view?.setTableConfigure()
+        view?.setTitle(model: lists)
         registerTable()
     }
     func fetchData() {
@@ -46,8 +49,20 @@ extension HomeListViewModel: HomeListViewModelInterface {
         for remind in result {
             if remind.list == lists.title {
                 self.remindResult.append(remind)
+                let remindList = self.remindResult.map({
+                    ReminderPresentation(model: $0)})
+                self.notify(output: .loadRemindPresentation(presentation: remindList))
             }
         }
+        if self.remindResult.isEmpty {
+            self.notify(output: .showEmptyView(message: "No Reminders"))
+        } else {
+            self.notify(output: .removeEmpty)
+        }
+    }
+// Helper
+    private func notify(output: HomeListOutput) {
+        view?.setHandlePresentation(output: output)
     }
     func registerTable() {
         view?.setRegisterTable()
@@ -58,7 +73,7 @@ extension HomeListViewModel: HomeListViewModelInterface {
     var numberOfRow: Int {
         remindResult.count
     }
-    func cellForRow(at indexPath: IndexPath) -> Reminder? {
-        remindResult.count > indexPath.row ? remindResult[indexPath.row] : nil
-    }
+//    func cellForRow(at indexPath: IndexPath) -> Reminder? {
+//        remindResult.count > indexPath.row ? remindResult[indexPath.row] : nil
+//    }
 }

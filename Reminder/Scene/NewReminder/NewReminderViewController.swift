@@ -19,6 +19,7 @@ protocol NewReminderViewInterface: AnyObject {
     func setToolBar()
     func popToRootHome()
     func setAlert()
+    func setNavBarTitleColor()
     var titleReminder: String? { get }
     var noteReminder: String? { get }
     var flagBool: Bool? { get }
@@ -105,6 +106,9 @@ extension NewReminderViewController: NewReminderViewInterface {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTappedCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(didTappedAdd))
     }
+    func setNavBarTitleColor() {
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+    }
     func setLayout() {
         table.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .init(width: view.frame.width, height: view.frame.height))
         toolBarLabel.frame = CGRect(x: 20, y: 20, width: 100, height: 50)
@@ -143,6 +147,13 @@ extension NewReminderViewController: NewReminderViewInterface {
     }
     func popToRootHome() {
         navigationController?.popToRootViewController(animated: true)
+    }
+    func handleOutput(output: ListOutput) {
+        switch output {
+        case .listPresentation(let presentation):
+            self.currentLists = presentation
+            self.reloadTable()
+        }
     }
     var titleReminder: String? {
         return titles
@@ -211,13 +222,6 @@ extension NewReminderViewController: UITableViewDataSource {
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             return cell
-        }
-    }
-    func handleOutput(output: ListOutput) {
-        switch output {
-        case .listPresentation(let presentation):
-            self.currentLists = presentation
-            self.reloadTable()
         }
     }
 }

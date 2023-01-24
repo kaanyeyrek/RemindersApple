@@ -18,3 +18,4 @@ init(model: ReminderList) {
         self.color = model.color
     }
 }
+

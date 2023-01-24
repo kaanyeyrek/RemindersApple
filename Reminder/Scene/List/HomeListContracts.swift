@@ -8,5 +8,7 @@
 import Foundation
 
 enum HomeListOutput {
-    case loadPresentation([ReminderListPresentation])
+    case loadRemindPresentation(presentation: [ReminderPresentation])
+    case showEmptyView(message: String)
+    case removeEmpty
 }

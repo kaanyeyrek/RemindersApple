@@ -32,6 +32,11 @@ extension HomeViewModel: HomeViewModelInterface {
     func viewWillAppear() {
         reminderModel = manager.fetch() ?? []
         view?.reloadData()
+        if self.reminderModel.isEmpty {
+            self.notify(output: .showEmptyView(message: "No Reminders"))
+        } else {
+            self.notify(output: .removeEmpty)
+        }
     }
     func viewDidLoad() {
         view?.setUI()
@@ -40,6 +45,10 @@ extension HomeViewModel: HomeViewModelInterface {
         view?.setSearchController()
         view?.setTableView()
         view?.setTarget()
+    }
+// Helper
+    private func notify(output: HomeViewModelOutput) {
+        view?.setHandleOutput(output: output)
     }
     func didTappedAddListButton() {
         view?.navigate(with: .addNewList)

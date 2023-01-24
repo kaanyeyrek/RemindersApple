@@ -18,7 +18,7 @@ protocol ReminderTableViewCellInterface: AnyObject {
 
 class RemindersTableViewCell: UITableViewCell {
     
-    private var iconBackground = RMView(color: nil, radius: 33)
+    private var iconBackground = RMView(color: nil, radius: 33, message: "")
     private var iconImage = RMImageView(setImage: UIImage(systemName: Constants.cellIcon), setBackgroundColor: nil)
     private var remindersTitle = RMLabel(color: .black, alignment: .left, fontSize: 15)
     private var countLabel = RMLabel(color: .lightGray, alignment: .center, fontSize: 20)

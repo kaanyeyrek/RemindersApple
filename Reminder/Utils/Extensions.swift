@@ -7,6 +7,8 @@
 
 import UIKit
 
+private var emptyView: RMView?
+
 // NSLayout Ex
 struct AnchoredConstraints {
     var top, leading, bottom, trailing, width, height: NSLayoutConstraint?
@@ -73,27 +75,30 @@ extension UIView {
 }
 // Custom alert ex
 extension UIViewController {
-  func alert(message: String, title: String) {
-    let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-    alertController.addAction(action)
-    self.present(alertController, animated: true, completion: nil)
-  }
-//// Empty View
-//    func showEmptyStateView(with message: String, at view: UIView) {
-//        DispatchQueue.main.async {
-//            emptyView?.removeFromSuperview()
-//            emptyView = EmptyView(message: message)
-//            guard let emptyView = emptyView else { return }
-//            emptyView.frame = view.safeAreaLayoutGuide.layoutFrame
-//            view.addSubview(emptyView)
-//        }
-//    }
-//    func removeEmptyStateView() {
-//        DispatchQueue.main.async {
-//            emptyView?.removeFromSuperview()
-//        }
+    func alert(message: String, title: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
+    }
+// Empty View
+    func showEmptyStateView(with message: String, at view: UIView) {
+        DispatchQueue.main.async {
+            emptyView?.removeFromSuperview()
+            emptyView = RMView(color: .systemBackground, radius: 0, message: message)
+            guard let emptyView = emptyView else { return }
+            emptyView.frame = view.safeAreaLayoutGuide.layoutFrame
+            view.addSubview(emptyView)
+        }
+    }
+// Remove Empty View
+    func removeEmptyStateView() {
+        DispatchQueue.main.async {
+            emptyView?.removeFromSuperview()
+        }
+    }
 }
+// UIColor Extension
 extension UIColor {
     public convenience init?(hex: String) {
         let r, g, b, a: CGFloat
