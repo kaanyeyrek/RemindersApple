@@ -13,12 +13,15 @@ protocol HomeDetailListTableInterface: AnyObject {
 
 class HomeDetailListTableViewCell: UITableViewCell {
     
+//MARK: - UI Elements
+    private var ID: String?
     private var listTextView = RMTextView()
     private var priorityLabel = RMLabel(color: .orange, alignment: .center, fontSize: 20)
     private var flagIconImage = RMImageView(setImage: UIImage(systemName: Constants.flaggedIcon), setBackgroundColor: .orange)
     private var selectionList = RMImageView(setImage: UIImage(systemName: Constants.circleImage), setBackgroundColor: .none)
     private var editingTextField = ""
     
+//MARK: - Injections
     private lazy var viewModel: HomeDetailListViewModelInterface = HomeDetailListViewModel(view: self)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -28,7 +31,7 @@ class HomeDetailListTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-//MARK: - objc action
+//MARK: - @objc action
     @objc private func didTappedCompletedList() {
         selectionList.backgroundColor = .systemGreen
     }
@@ -87,6 +90,9 @@ class HomeDetailListTableViewCell: UITableViewCell {
     func setTitle(model: ReminderPresentation) {
         listTextView.text =  model.remindTitle
     }
+    func setID(model: ReminderPresentation) {
+        self.ID = model.remindID
+    }
 }
 //MARK: - UITextView Delegate
 extension HomeDetailListTableViewCell: UITextViewDelegate {
@@ -97,9 +103,10 @@ extension HomeDetailListTableViewCell: UITextViewDelegate {
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         editingTextField = textView.text
-        viewModel.savedEditReminderTitle()
+        viewModel.savedEditReminderTitle(reminderID: self.ID ?? "")
     }
 }
+//MARK: - HomeDetailListTable Interface
 extension HomeDetailListTableViewCell: HomeDetailListTableInterface {
     var editingTitle: String {
         editingTextField

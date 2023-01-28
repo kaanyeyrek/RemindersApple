@@ -102,6 +102,7 @@ extension HomeListViewController: UITableViewDataSource {
         cell.setTitle(model: model)
         cell.setFlagIcon(model: model)
         cell.setPriority(model: model)
+        cell.setID(model: model)
         return cell
     }
 }

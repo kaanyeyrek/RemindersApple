@@ -108,7 +108,7 @@ extension AddNewListViewController: AddNewListViewInterface {
         return savedAttributes.thumbNailImage
     }
     var listTitle: String? {
-        return newListField.text
+        return newListField.text?.capitalized
     }
     var listID: UUID {
         return UUID()
