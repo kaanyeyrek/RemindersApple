@@ -33,7 +33,7 @@ extension HomeViewModel: HomeViewModelInterface {
         reminderModel = manager.fetch() ?? []
         view?.reloadData()
         if self.reminderModel.isEmpty {
-            self.notify(output: .showEmptyView(message: "No Reminders"))
+            self.notify(output: .showEmptyView(message: "No List"))
         } else {
             self.notify(output: .removeEmpty)
         }

@@ -32,7 +32,7 @@ final class AddNewListViewController: UIViewController {
 //MARK: - UI Elements
     private var collection: UICollectionView!
 //MARK: - UI Components
-    private var listArray = ["#e93b81ff", "#9fe6a0ff", "#233e8bff", "#e40017ff", "#ff5200ff", "#295939ff", "#231939ff", "#371A54ff", "#DB5314ff", "#DB15BBff", "#5EA2DBff", "#5EA290ff", ListIcon.list, ListIcon.bookmark, ListIcon.house, ListIcon.gift, ListIcon.birthday, ListIcon.airplane]
+    private var listArray = ["#e93b81ff", "#9fe6a0ff", "#233e8bff", "#e40017ff", "#ff5200ff", "#295939ff", "#231939ff", "#371A54ff", "#DB5314ff", "#DB15BBff", "#5EA2DBff", "#5EA290ff", ListIcon.list, ListIcon.bookmark, ListIcon.house, ListIcon.gift, ListIcon.birthday, ListIcon.airplane, ListIcon.basket, ListIcon.cloud, ListIcon.graduation, ListIcon.book, ListIcon.sports, ListIcon.star]
 //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

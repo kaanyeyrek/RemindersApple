@@ -93,13 +93,14 @@ extension NewReminderViewModel: NewReminderViewModelInterface {
             let note = view?.noteReminder, !note.isEmpty,
             let priority = view?.selectedPriority,
             let list = view?.selectedList,
-            let id = view?.reminderID.uuidString {
+            let id = view?.reminderID.uuidString,
+            let bool = view?.flagBool {
             
             guard let context = CoreDataManager().context else { return }
             let remind = Reminder(context: context)
             for newRemind in currentLists {
                 let remindList = newRemind
-                remind.flagged = ((view?.flagBool) != nil)
+                remind.flagged = bool
                 remind.title = title
                 remind.notes = note
                 remind.priority = priority

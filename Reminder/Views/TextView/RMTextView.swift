@@ -21,6 +21,7 @@ class RMTextView: UITextView {
         textColor = .lightGray
         font = .systemFont(ofSize: 17, weight: .regular)
         autocapitalizationType = .none
+        textAlignment = .left
     }
 }
 

@@ -65,7 +65,7 @@ extension HomeListViewController: HomeListViewInterface {
         table.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .init(width: view.frame.width, height: view.frame.height))
     }
     func setRegisterTable() {
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(HomeDetailListTableViewCell.self, forCellReuseIdentifier: ReuseID.homeDetailListTableViewCell)
     }
     func tableReload() {
         table.reloadData()
@@ -96,9 +96,12 @@ extension HomeListViewController: UITableViewDataSource {
         viewModel.numberOfRow
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.homeDetailListTableViewCell, for: indexPath) as! HomeDetailListTableViewCell
+        cell.contentView.isUserInteractionEnabled = false
         let model = remindPresentation[indexPath.row]
-        cell.textLabel?.text = model.remindTitle
+        cell.setTitle(model: model)
+        cell.setFlagIcon(model: model)
+        cell.setPriority(model: model)
         return cell
     }
 }

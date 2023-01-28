@@ -68,7 +68,7 @@ extension HomeListViewModel: HomeListViewModelInterface {
         view?.setRegisterTable()
     }
     func heightForRowAt(at: IndexPath) -> CGFloat {
-        .init(60)
+        .init(70)
     }
     var numberOfRow: Int {
         remindResult.count

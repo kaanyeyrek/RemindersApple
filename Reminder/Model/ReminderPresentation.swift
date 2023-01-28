@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ReminderPresentation {
+struct ReminderPresentation: Equatable {
     let remindFlagged: Bool?
     let remindTitle: String?
     let remindNotes: String?

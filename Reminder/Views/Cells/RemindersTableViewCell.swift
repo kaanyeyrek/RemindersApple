@@ -55,7 +55,7 @@ extension RemindersTableViewCell: ReminderTableViewCellInterface {
         countLabel.text = "3"
     }
     public func setTitle(with model: ReminderList) {
-        remindersTitle.text = model.title
+        remindersTitle.text = model.title?.capitalized
     }
     public func setIcon(with model: ReminderList) {
         iconImage.image = UIImage(systemName: model.image!)

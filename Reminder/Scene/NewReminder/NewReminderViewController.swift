@@ -42,7 +42,7 @@ final class NewReminderViewController: UIViewController {
     private var selectedPriorityName = ""
     private var currentPicker: Int?
     private var currentLists = [ReminderListPresentation]()
-    private var isFlagged = true
+    private var isFlagged : Bool = false
     private var titles: String?
     private var note: String?
 //MARK: - LifeCycle
@@ -66,7 +66,7 @@ final class NewReminderViewController: UIViewController {
         listPicker.removeFromSuperview()
         priorityPicker.removeFromSuperview()
         if currentPicker == 1 {
-            self.selectedListName = (currentLists[listPicker.selectedRow(inComponent: 0)].title)!
+            self.selectedListName = (currentLists[listPicker.selectedRow(inComponent: 0)].title?.capitalized)!
             DispatchQueue.main.async {
                 self.reloadTable()
             }
@@ -271,6 +271,7 @@ extension NewReminderViewController: UIPickerViewDataSource {
 extension NewReminderViewController: FlagSwitchedDelegate {
     func switchedFlag(with: Bool) {
         isFlagged = with
+        print(isFlagged)
     }
 }
 //MARK: - Reminder NoteTextView Delegate
