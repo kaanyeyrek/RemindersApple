@@ -120,7 +120,7 @@ extension AddNewListViewController: AddNewListViewInterface {
         self.alert(message: "Please fill in the all field.", title: "Error!")
     }
     func endKeyboard() {
-       let gesture = UITapGestureRecognizer(target: self, action: #selector(didTappedEmptyForCloseKeyboard))
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTappedEmptyForCloseKeyboard))
         gesture.view?.isUserInteractionEnabled = true
         gesture.delegate = self
         view.addGestureRecognizer(gesture)
@@ -151,7 +151,6 @@ extension AddNewListViewController: UICollectionViewDelegate {
         if indexPath.item > 11 {
             savedAttributes.thumbNailImage = listArray[indexPath.item]
             newListIcon.image = UIImage(systemName: listArray[indexPath.item])
-            
         } else {
             savedAttributes.thumbnailColor = listArray[indexPath.item]
             newListIcon.backgroundColor = UIColor(hex: listArray[indexPath.item])

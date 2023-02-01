@@ -20,7 +20,6 @@ class RMView: UIView {
         backgroundColor = color
         layer.cornerRadius = radius
         label.text = message
-       
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

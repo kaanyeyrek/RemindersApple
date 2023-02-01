@@ -12,3 +12,6 @@ enum HomeListOutput {
     case showEmptyView(message: String)
     case removeEmpty
 }
+enum HomeListRoute {
+    case newReminder
+}

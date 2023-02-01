@@ -17,11 +17,14 @@ protocol HomeListViewInterface: AnyObject {
     func tableReload()
     func setTitle(model: ReminderList)
     func setNavBarTitleColor(model: ReminderList)
+    func navigate(route: HomeListRoute)
+    func setTarget()
 }
 
 final class HomeListViewController: UIViewController {
 //MARK: - Injections
     private var viewModel: HomeListViewModelInterface!
+    private var newReminderButton = RMButton(title: " New Reminder", titleColor: .orange, image: UIImage(systemName: Constants.addNewReminder), size: 20)
     
     init(viewModel: HomeListViewModelInterface!) {
         super.init(nibName: nil, bundle: nil)
@@ -43,32 +46,42 @@ final class HomeListViewController: UIViewController {
         viewModel.view = self
         viewModel.viewDidLoad()
     }
-    func setTableConfigure() {
-        table.delegate = self
-        table.dataSource = self
-        table.separatorStyle = .singleLine
-        table.separatorInset = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 0)
-        table.showsVerticalScrollIndicator = false
+    //MARK: - @objc actions
+    @objc private func didTappedNewReminder() {
+        viewModel.newReminderButton()
     }
 }
 //MARK: - HomeListView Interface
 extension HomeListViewController: HomeListViewInterface {
     func setUI() {
         view.backgroundColor = .systemBackground
+        newReminderButton.tintColor = .orange
     }
     func setSubviews() {
-        [table].forEach { elements in
+        [table, newReminderButton].forEach { elements in
             view.addSubview(elements)
         }
     }
+    func setTarget() {
+        newReminderButton.addTarget(self, action: #selector(didTappedNewReminder), for: .touchUpInside)
+    }
     func setLayout() {
         table.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .init(width: view.frame.width, height: view.frame.height))
+        
+        newReminderButton.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 10, bottom: 35, right: 0), size: .init(width: 170, height: 50))
     }
     func setRegisterTable() {
         table.register(HomeDetailListTableViewCell.self, forCellReuseIdentifier: ReuseID.homeDetailListTableViewCell)
     }
     func tableReload() {
         table.reloadData()
+    }
+    func setTableConfigure() {
+        table.delegate = self
+        table.dataSource = self
+        table.separatorStyle = .singleLine
+        table.separatorInset = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 0)
+        table.showsVerticalScrollIndicator = false
     }
     func setTitle(model: ReminderList) {
         title = model.title?.capitalized
@@ -87,6 +100,13 @@ extension HomeListViewController: HomeListViewInterface {
             }
         case .removeEmpty:
             self.removeEmptyStateView()
+        }
+    }
+    func navigate(route: HomeListRoute) {
+        switch route {
+        case .newReminder:
+            let vc = NewReminderViewController()
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

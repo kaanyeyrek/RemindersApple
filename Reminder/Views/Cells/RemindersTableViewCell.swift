@@ -8,9 +8,10 @@
 import UIKit
 
 protocol ReminderTableViewCellInterface: AnyObject {
-    func setTitle(with model: ReminderList)
-    func setIcon(with model: ReminderList)
-    func setIconBackgroundColor(with model: ReminderList)
+    func setTitle(with model: ReminderListPresentation)
+    func setIcon(with model: ReminderListPresentation)
+    func setIconBackgroundColor(with model: ReminderListPresentation)
+    func setRemindCount(with count: String)
     func layout()
     func setUI()
     func addSubviews()
@@ -52,16 +53,18 @@ extension RemindersTableViewCell: ReminderTableViewCellInterface {
         remindersTitle.anchor(top: self.topAnchor, leading: iconBackground.trailingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 10, bottom: 15, right: 10), size: .init(width: 80, height: 30))
       
         countLabel.anchor(top: self.topAnchor, leading: nil, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 30), size: .init(width: 30, height: 30))
-        countLabel.text = "3"
     }
-    public func setTitle(with model: ReminderList) {
+    public func setTitle(with model: ReminderListPresentation) {
         remindersTitle.text = model.title?.capitalized
     }
-    public func setIcon(with model: ReminderList) {
+    public func setIcon(with model: ReminderListPresentation) {
         iconImage.image = UIImage(systemName: model.image!)
     }
-    public func setIconBackgroundColor(with model: ReminderList) {
+    public func setIconBackgroundColor(with model: ReminderListPresentation) {
         iconImage.backgroundColor = UIColor(hex: model.color!)
+    }
+    public func setRemindCount(with count: String) {
+        countLabel.text = count
     }
 }
                    

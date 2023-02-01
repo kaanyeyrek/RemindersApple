@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import CoreData
 
 protocol HomeDetailListViewModelInterface {
     var view: HomeDetailListTableViewCell? { get set }
@@ -33,10 +32,10 @@ extension HomeDetailListViewModel: HomeDetailListViewModelInterface {
     }
     func savedEditReminderTitle(reminderID: String) {
         guard let title = view?.editingTitle else { return }
-            
         let result = manager.fetchRemindRelation() ?? []
-            guard let foundReminder = result.first(where: { reminder in
-                reminder.id == reminderID
+        // predicate for id
+            guard let foundReminder = result.first(where: { remind in
+                remind.id == reminderID
             }) else { return }
         foundReminder.title = title
         manager.save()

@@ -16,7 +16,7 @@ protocol HomeListViewModelInterface {
     var numberOfRow: Int { get }
     func fetchData()
     func viewWillAppear()
-   
+    func newReminderButton()
 }
 
 final class HomeListViewModel {
@@ -40,9 +40,13 @@ extension HomeListViewModel: HomeListViewModelInterface {
         view?.setUI()
         view?.setSubviews()
         view?.setLayout()
+        view?.setTarget()
         view?.setTableConfigure()
         view?.setTitle(model: lists)
         registerTable()
+    }
+    func newReminderButton() {
+        view?.navigate(route: .newReminder)
     }
     func fetchData() {
         let result = manager.fetchRemindRelation() ?? []

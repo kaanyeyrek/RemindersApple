@@ -14,6 +14,7 @@ protocol CoreDataManagerInterface {
     func delete(model: ReminderList)
     func fetchRemindRelation() -> [Reminder]?
     func deleteRemindRelation(model: Reminder)
+    func searchFilterList(query: String) -> NSPredicate
 }
 
 final class CoreDataManager {
@@ -44,6 +45,12 @@ extension CoreDataManager: CoreDataManagerInterface {
     func delete(model: ReminderList) {
         context?.delete(model)
         try? context?.save()
+    }
+    // filter
+    func searchFilterList(query: String) -> NSPredicate {
+        let request: NSFetchRequest<ReminderList> = ReminderList.fetchRequest()
+        request.predicate = NSPredicate(format: "name CONTAINS[cd] %@", query)
+        return request.predicate!
     }
 //MARK: - Relation Methods
     func fetchRemindRelation() -> [Reminder]? {
