@@ -17,7 +17,6 @@ protocol HomeViewInterface: AnyObject {
     func reloadData()
     func navigate(with route: HomeViewModelRoute)
     func setHandleOutput(output: HomeViewModelOutput)
-    func setCountLabel()
 }
 
 final class HomeViewController: UIViewController {
@@ -40,8 +39,6 @@ final class HomeViewController: UIViewController {
 //MARK: - UI Components
     private var homeListPresentation = [ReminderListPresentation]()
     private var filteredData = [ReminderListPresentation]()
-    private var reminderListCount = [ReminderPresentation]()
-    private var getSum = 0
 //MARK: - LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -74,10 +71,6 @@ extension HomeViewController: HomeViewInterface {
             self.homeListPresentation = presentation
             self.filteredData = presentation
             self.reloadData()
-        
-        case .reminderCountPresentation(let reminderCount):
-            self.reminderListCount = reminderCount
-            self.reloadData()
         }
     }
     func navigate(with route: HomeViewModelRoute) {
@@ -99,17 +92,6 @@ extension HomeViewController: HomeViewInterface {
         flaggedLabel.text = "Flagged"
         tableHeaderTitle.text = "My Lists"
         table.layer.cornerRadius = 20
-    }
-    func setCountLabel() {
-            DispatchQueue.main.async {
-                var sum = 0
-                for list in self.homeListPresentation {
-                    
-                    sum += Int((list.title?.count)!)
-                }
-                self.getSum = sum
-                self.reloadData()
-            }
     }
     func setAddSubviews() {
       [tableHeaderTitle, allView, flaggedView, allLabel, flaggedLabel, allCountLabel, flaggedCountLabel, allIcon, flaggedIcon, table, newReminderButton, addListButton].forEach { elements in
@@ -183,7 +165,6 @@ extension HomeViewController: UITableViewDataSource {
         cell.setTitle(with: list)
         cell.setIcon(with: list)
         cell.setIconBackgroundColor(with: list)
-        cell.setRemindCount(with: String(self.getSum))
         return cell
     }
 }
@@ -205,7 +186,7 @@ extension HomeViewController: UISearchBarDelegate {
                 } else {
                     filteredData = homeListPresentation.filter { $0.title!.contains(searchText) }
                 }
-        self.reloadData()
+                    self.reloadData()
             }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()

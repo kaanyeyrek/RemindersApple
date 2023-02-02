@@ -6,12 +6,12 @@
 //
 
 import UIKit
+import CoreData
 
 protocol ReminderTableViewCellInterface: AnyObject {
     func setTitle(with model: ReminderListPresentation)
     func setIcon(with model: ReminderListPresentation)
     func setIconBackgroundColor(with model: ReminderListPresentation)
-    func setRemindCount(with count: String)
     func layout()
     func setUI()
     func addSubviews()
@@ -54,17 +54,14 @@ extension RemindersTableViewCell: ReminderTableViewCellInterface {
       
         countLabel.anchor(top: self.topAnchor, leading: nil, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 30), size: .init(width: 30, height: 30))
     }
-    public func setTitle(with model: ReminderListPresentation) {
+    func setTitle(with model: ReminderListPresentation) {
         remindersTitle.text = model.title?.capitalized
     }
-    public func setIcon(with model: ReminderListPresentation) {
+    func setIcon(with model: ReminderListPresentation) {
         iconImage.image = UIImage(systemName: model.image!)
     }
-    public func setIconBackgroundColor(with model: ReminderListPresentation) {
+    func setIconBackgroundColor(with model: ReminderListPresentation) {
         iconImage.backgroundColor = UIColor(hex: model.color!)
-    }
-    public func setRemindCount(with count: String) {
-        countLabel.text = count
     }
 }
                    

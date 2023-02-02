@@ -17,32 +17,34 @@ protocol HomeListViewModelInterface {
     func fetchData()
     func viewWillAppear()
     func newReminderButton()
+    func deletedRemind(indexPath: IndexPath)
 }
 
 final class HomeListViewModel {
     weak var view: HomeListViewInterface?
-    private var lists: ReminderList
+    private var lists: ReminderList?
     private var manager: CoreDataManagerInterface
-    private var remindResult = [Reminder]()
+    private var remindResult: [Reminder] = []
     
     init(lists: ReminderList, manager: CoreDataManagerInterface = CoreDataManager()) {
         self.lists = lists
         self.manager = manager
+        print(remindResult.count)
     }
 }
 //MARK: - HomeListViewModel Interface
 extension HomeListViewModel: HomeListViewModelInterface {
     func viewWillAppear() {
         self.fetchData()
-        view?.setNavBarTitleColor(model: lists)
-    }
+        view?.setNavBarTitleColor(model: lists!)
+        }
     func viewDidLoad() {
         view?.setUI()
         view?.setSubviews()
         view?.setLayout()
         view?.setTarget()
         view?.setTableConfigure()
-        view?.setTitle(model: lists)
+        view?.setTitle(model: lists!)
         registerTable()
     }
     func newReminderButton() {
@@ -50,8 +52,9 @@ extension HomeListViewModel: HomeListViewModelInterface {
     }
     func fetchData() {
         let result = manager.fetchRemindRelation() ?? []
+        view?.tableReload()
         for remind in result {
-            if remind.list == lists.title {
+            if remind.list == lists?.title {
                 self.remindResult.append(remind)
                 let remindList = self.remindResult.map({
                     ReminderPresentation(model: $0)})
@@ -80,4 +83,13 @@ extension HomeListViewModel: HomeListViewModelInterface {
 //    func cellForRow(at indexPath: IndexPath) -> Reminder? {
 //        remindResult.count > indexPath.row ? remindResult[indexPath.row] : nil
 //    }
+    func deletedRemind(indexPath: IndexPath) {
+        guard let context = CoreDataManager().context else { return }
+            context.delete(self.remindResult[indexPath.row])
+            self.remindResult.remove(at: indexPath.row)
+            manager.save()
+        DispatchQueue.main.async {
+            self.view?.tableReload()
+        }
+    }
 }

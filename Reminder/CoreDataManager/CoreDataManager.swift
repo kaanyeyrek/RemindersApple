@@ -2,7 +2,7 @@
 //  CoreDataManager.swift
 //  Reminder
 //
-//  Created by Kaan Yeyrek on 1/18/23.
+//  Created by Kaan Yeyrek on 2/2/23.
 //
 
 import UIKit

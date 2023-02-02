@@ -16,5 +16,4 @@ enum HomeViewModelOutput {
     case showEmptyView(message: String)
     case removeEmpty
     case loadPresentation(presentation: [ReminderListPresentation])
-    case reminderCountPresentation(presentation: [ReminderPresentation])
 }

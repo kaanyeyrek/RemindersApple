@@ -15,7 +15,6 @@ protocol HomeViewModelInterface {
     var numberOfRowsInSection: Int { get }
 //    func cellForItem(at indexPath: IndexPath) -> ReminderList?
     func didSelectForRow(at index: Int)
-    func fetchReminder()
 }
 
 final class HomeViewModel {
@@ -44,14 +43,6 @@ extension HomeViewModel: HomeViewModelInterface {
             self.notify(output: .removeEmpty)
         }
     }
-    func fetchReminder() {
-        reminderListModel = manager.fetchRemindRelation() ?? []
-        view?.reloadData()
-        let presentation = self.reminderListModel.map({
-            ReminderPresentation(model: $0)
-        })
-        notify(output: .reminderCountPresentation(presentation: presentation))
-    }
     func viewDidLoad() {
         view?.setUI()
         view?.setAddSubviews()
@@ -59,7 +50,6 @@ extension HomeViewModel: HomeViewModelInterface {
         view?.setSearchController()
         view?.setTableView()
         view?.setTarget()
-        view?.setCountLabel()
     }
 // Helper
     private func notify(output: HomeViewModelOutput) {
